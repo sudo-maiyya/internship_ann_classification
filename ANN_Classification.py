@@ -130,4 +130,4 @@ class ANN_Classification:
                 # Right prediction
                 correct += 1
 
-            return correct / len(X)
+        return correct / len(X)
