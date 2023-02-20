@@ -1,8 +1,11 @@
+#calling required libraries
 import numpy as np
-
 import pandas as pd
 
+#
 class ANN_Classification:
+    
+    #function used to store variables as a global variables
     def __init__(self, hidden_Layer_Size=[100,], learning_Rate=0.001, epoch=10, X_val=None, Y_val=None):
         self.hidden_Layer_Size = hidden_Layer_Size
         self.learning_Rate = learning_Rate
@@ -11,6 +14,7 @@ class ANN_Classification:
         self.X_val = X_val
         self.Y_val = Y_val
 
+    #function for sigmoid activation function
     def Sigmoid(self, x):
         return 1 / (1 + np.exp(-x))
 
@@ -43,8 +47,7 @@ class ANN_Classification:
                 prevActivation = activations[0]
 
             delta = np.multiply(error, self.SigmoidDerivative(currActivation))
-            weights[j-1] += self.learning_Rate * \
-                np.multiply(delta.T, prevActivation)
+            weights[j-1] += self.learning_Rate * np.multiply(delta.T, prevActivation)
 
             wc = np.delete(weights[j-1], [0], axis=1)
             error = np.dot(delta, wc)  # current layer error
@@ -84,7 +87,7 @@ class ANN_Classification:
         for epoch in range(1, self.epoch+1):
             weights = self.train(self.X, self.y, weights)
 
-            if (epoch % 10 == 0):
+            if (epoch % 1 == 0):
                 print("Epoch {}".format(epoch))
                 print("Training Accuracy:{}".format(
                     self.Accuracy(self.X, self.y, weights)))
