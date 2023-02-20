@@ -6,13 +6,11 @@ import pandas as pd
 class ANN_Classification:
     
     #function used to store variables as a global variables
-    def __init__(self, hidden_Layer_Size=[100,], learning_Rate=0.001, epoch=10, X_val=None, Y_val=None):
+    def __init__(self, hidden_Layer_Size=[100,], learning_Rate=0.001, epoch=10):
         self.hidden_Layer_Size = hidden_Layer_Size
         self.learning_Rate = learning_Rate
         self.epoch = epoch
        # self.activation_function = activation_function
-        self.X_val = X_val
-        self.Y_val = Y_val
 
     #function for sigmoid activation function
     def Sigmoid(self, x):
@@ -91,10 +89,6 @@ class ANN_Classification:
                 print("Epoch {}".format(epoch))
                 print("Training Accuracy:{}".format(
                     self.Accuracy(self.X, self.y, weights)))
-
-                if self.X_val.any():
-                    print("Validation Accuracy:{}".format(
-                        self.Accuracy(self.X_val, self.Y_val, weights)))
 
         return weights
 
