@@ -21,8 +21,6 @@ class ANN_Classification:
     def forward_Prop(self, x, weights, layers):
         activations, layer_input = [x], x
         for j in range(layers):
-         # i =
-            # print("i = "+str(i))
             activation = self.Sigmoid(np.dot(layer_input, weights[j].T))
             activations.append(activation)
             layer_input = np.append(1, activation)
